@@ -1,4 +1,4 @@
-# NEA-Coursework
+# NEA-Coursework : BeaconMe
 
 Description:
 
@@ -25,3 +25,7 @@ Objectives:
 * A Version of the client will be made for the teacher where they will be able to change the room incase of room changes and remove the lesson from the timetable in case of staff member absence 
 
 * A Notfication will be sent to the student in case of room change or the cancellation of a lesson 
+
+* The App will have to detect the google beacon devices and quickly figure out where it is 
+
+*
