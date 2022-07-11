@@ -28,4 +28,4 @@ Objectives:
 
 * The App will have to detect the google beacon devices and quickly figure out where it is 
 
-*
+* The implementation of Dijkstra's short path algorithm to find the quickest path from the current location (like a tomtom)
