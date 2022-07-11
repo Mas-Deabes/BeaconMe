@@ -1,4 +1,4 @@
-# NEA-Coursework : BeaconMe
+# NEA-Coursework (Project Name : BeaconMe)
 
 Description:
 
