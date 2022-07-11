@@ -20,4 +20,4 @@ Objectives:
 
 * The ability to access a dashboard like enviroment and customise the content to the user's liking
 
-* To Add 
+* To Add the Name of the class and automatically assigning the timetable to the student 
