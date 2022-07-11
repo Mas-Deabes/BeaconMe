@@ -22,4 +22,6 @@ Objectives:
 
 * To Add the Name of the class and automatically assigning the timetable to the student (through the help of the data stored in the database)
 
-* A Version of the client will be made for the teacher where they will be able to change the room incase of room changes 
+* A Version of the client will be made for the teacher where they will be able to change the room incase of room changes and remove the lesson from the timetable in case of staff member absence 
+
+* A Notfication will be sent to the student in case of room change or the cancellation of a lesson 
