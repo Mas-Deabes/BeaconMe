@@ -29,3 +29,5 @@ Objectives:
 * The App will have to detect the google beacon devices and quickly figure out where it is 
 
 * The implementation of Dijkstra's short path algorithm to find the quickest path from the current location (like a tomtom)
+
+* once a user has arrived to let them know they are in front of the room through a warning on the app itself
