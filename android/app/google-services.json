@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "481585720400",
+    "project_id": "beaconme-65388",
+    "storage_bucket": "beaconme-65388.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481585720400:android:ae065aa5820459b62e7555",
+        "android_client_info": {
+          "package_name": "com.example.nea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481585720400-rqigirp253796ns52fljg7kkc43nvmnq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDO2L_Kbpsvx9prHjs1azjdVcT1BvwyHKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481585720400-rqigirp253796ns52fljg7kkc43nvmnq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
