@@ -24,8 +24,6 @@ class _dashboardScreenState extends State<dashboardScreen>{
               },
               color: Colors.deepPurpleAccent,
               child: Text("Sign Out"),
-
-
           )
         ],
       ),

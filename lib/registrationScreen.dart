@@ -1,25 +1,23 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  final VoidCallback showRegistrationScreen;
-  const LoginScreen({Key? key,required this.showRegistrationScreen}) : super(key: key);
+class registrationScreen extends StatefulWidget{
+  final VoidCallback showLoginScreen;
+  const registrationScreen({
+      Key? key,
+      required this.showLoginScreen
+  }) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
-
+  State<registrationScreen> createState() => _registrationScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _registrationScreenState extends State<registrationScreen> {
 
   final _userController = TextEditingController();
   final _passwordController = TextEditingController();
-  Future SignIn() async{
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _userController.text.trim(),
-        password: _passwordController.text.trim(),
-    );
-  }
+
+  @override
 
   void dispose() {
     _userController.dispose();
@@ -27,9 +25,15 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  Future signUp() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _userController.text.trim(),
+        password: _passwordController.text.trim(),
+    );
 
-  @override
-  Widget build(BuildContext context){
+  }
+
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -37,16 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Image.asset(
-                    'assets/images/Logo.png',
-                  height: 250,
-                  width: 250,
-                ),
-                //Greet Message to User
-                SizedBox(height: 10),
-
                 Text(
-                  'Log In To Access the Dashboard',
+                  'Register To Create An Account',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 17,
@@ -98,11 +94,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 20),
 
                 //Sign in Button
-                
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
-                    onTap: SignIn,
+                    onTap: signUp,
                     child: Container(
                       padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
@@ -111,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       child: Center(
                         child: Text(
-                          "Sign In",
+                          "Sign Up",
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -122,23 +118,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                Text(
-                  "Don't Have an Account?",
-                  style: TextStyle(
-                  ),
-                ),
+
                 GestureDetector(
-                  onTap: widget.showRegistrationScreen,
+                  onTap: widget.showLoginScreen,
                   child: Text(
-                    "Register Here",
+                    "Log in",
                     style: TextStyle(
-                      color: Colors.blue,
                       fontWeight: FontWeight.bold,
+                      color: Colors.blue,
                     ),
                   ),
                 ),
-
-
               ],
             ),
           ),
