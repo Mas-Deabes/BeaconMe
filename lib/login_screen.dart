@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -12,23 +13,19 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 50),
-              //Greet Message to User
-              Text(
-                'BeaconMe',
-                style: TextStyle(
-                fontWeight: FontWeight.bold,
-                  fontSize: 50,
-                ),
-
+              Image.asset(
+                  'assets/images/Logo.png',
+                height: 250,
+                width: 250,
               ),
-              SizedBox(height: 15),
+              //Greet Message to User
+
               Text(
                 'Log In To Access the Dashboard',
                 style: TextStyle(
@@ -38,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               //email or username box
 
-              SizedBox(height: 50),
+              SizedBox(height: 25),
 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -50,8 +47,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: TextField(
                     decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: '    Email - Username'
+                        border: InputBorder.none,
+                        hintText: '    Email - Username'
                     ),
                   ),
                 ),
@@ -81,12 +78,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(
                   padding: EdgeInsets.all(15),
                   decoration: BoxDecoration(
-                    color: Colors.teal,
-                    borderRadius: BorderRadius.circular(12)
+                      color: Colors.teal,
+                      borderRadius: BorderRadius.circular(12)
                   ),
                   child: Center(
                     child: Text(
-                        "Sign In",
+                      "Sign In",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -97,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Text(
-                  "Don't Have an Account?",
+                "Don't Have an Account?",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
