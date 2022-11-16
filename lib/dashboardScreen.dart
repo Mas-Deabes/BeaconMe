@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class dashboardScreen extends StatefulWidget {
@@ -8,10 +9,26 @@ class dashboardScreen extends StatefulWidget {
 }
 
 class _dashboardScreenState extends State<dashboardScreen>{
+
+  final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("Signed   In"),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Signed In as " + user.email!),
+          MaterialButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+              },
+              color: Colors.deepPurpleAccent,
+              child: Text("Sign Out"),
+
+
+          )
+        ],
+      ),
     );
   }
 }

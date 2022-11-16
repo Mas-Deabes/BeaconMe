@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                       color:  Colors.white70,
-                      border: Border.all(color: Colors.white70),
+                      border: Border.all(color: Colors.lightBlueAccent),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
@@ -82,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                       color:  Colors.white70,
-                      border: Border.all(color: Colors.white70),
+                      border: Border.all(color: Colors.lightBlueAccent),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextField(
