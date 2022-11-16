@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'login_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:nea/authCheck.dart';
 
 //The Main function is the starting point for all our flutter apps.
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  
   runApp(const MyApp());
 }
 
@@ -14,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home : LoginScreen(),
+      home : dashboard(),
     );
   }
 }
