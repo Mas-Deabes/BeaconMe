@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -17,7 +16,6 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
                   'assets/images/Logo.png',
@@ -25,6 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 250,
               ),
               //Greet Message to User
+              SizedBox(height: 30),
 
               Text(
                 'Log In To Access the Dashboard',
@@ -35,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               //email or username box
 
-              SizedBox(height: 25),
+              SizedBox(height: 50),
 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -71,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               //Sign in Button
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
