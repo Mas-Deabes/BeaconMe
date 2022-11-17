@@ -119,6 +119,9 @@ class _registrationScreenState extends State<registrationScreen> {
                   ),
                 ),
 
+                SizedBox(height: 25),
+
+
                 GestureDetector(
                   onTap: widget.showLoginScreen,
                   child: Text(

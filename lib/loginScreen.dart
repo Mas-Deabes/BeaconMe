@@ -122,6 +122,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
+
+                SizedBox(height: 25),
+
+
                 Text(
                   "Don't Have an Account?",
                   style: TextStyle(
