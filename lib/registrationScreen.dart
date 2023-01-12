@@ -16,12 +16,14 @@ class _registrationScreenState extends State<registrationScreen> {
 
   final _userController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPassword = TextEditingController();
 
   @override
 
   void dispose() {
     _userController.dispose();
     _passwordController.dispose();
+    _confirmPassword.dispose();
     super.dispose();
   }
 
@@ -31,6 +33,15 @@ class _registrationScreenState extends State<registrationScreen> {
         password: _passwordController.text.trim(),
     );
 
+  }
+
+  bool PasswordConfirmed() {
+    if (_passwordController.text.trim() == _confirmPassword.text.trim()) {
+      return true;
+    }
+    else {
+      return false ;
+    }
   }
 
   Widget build(BuildContext context) {
@@ -91,6 +102,28 @@ class _registrationScreenState extends State<registrationScreen> {
                     ),
                   ),
                 ),
+
+                //Confirm   Password Input Box
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color:  Colors.white70,
+                      border: Border.all(color: Colors.lightBlueAccent),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: TextField(
+                      controller: _confirmPassword,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: '   Confirm Password'
+                      ),
+                    ),
+                  ),
+                ),
+
                 SizedBox(height: 20),
 
                 //Sign in Button
