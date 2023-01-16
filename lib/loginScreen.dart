@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nea/ForgotPasswordScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   final VoidCallback showRegistrationScreen;
@@ -95,10 +96,38 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 5),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context,
+                              MaterialPageRoute(
+                                  builder: (context) {
+                                    return ForgotPasswordScreen();
+                                  },
+                              ),
+                          );
+                        },
+                        child: Text(
+                          'Forgot Password ?',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
 
                 //Sign in Button
-                
+
+                SizedBox(height: 10),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(

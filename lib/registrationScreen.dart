@@ -20,6 +20,7 @@ class _registrationScreenState extends State<registrationScreen> {
 
   @override
 
+
   void dispose() {
     _userController.dispose();
     _passwordController.dispose();
@@ -43,6 +44,8 @@ class _registrationScreenState extends State<registrationScreen> {
       return false ;
     }
   }
+
+
 
   Widget build(BuildContext context) {
     return Scaffold(
