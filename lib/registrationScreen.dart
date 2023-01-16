@@ -41,27 +41,28 @@ class _registrationScreenState extends State<registrationScreen> {
         email: _userController.text.trim(),
         password: _passwordController.text.trim(),
       );
+
+      // adds user details to firestore
+
      addUserDetails(
        _firstNameController.text.trim(),
        _lastNameController.text.trim(),
        _userController.text.trim(),
-       _passwordController.text.trim(),
      );
-
     }
   }
   
-  Future addUserDetails(String firstName, String lastName , String Email , String Password) async {
-    await FirebaseFirestore.instance.collection('UserCredentials').add({
-      'First Name' : firstName,
-      'Last Name' : lastName,
-      'Email' : Email,
-      'Password' :  Password,
+  Future addUserDetails(String firstName, String lastName , String Email ,) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'First Name': firstName,
+      'Last Name': lastName,
+      'Email': Email,
     });
   }
 
   bool PasswordConfirmed() {
-    if (_passwordController.text.trim() == _confirmPassword.text.trim()) {
+    if (_passwordController.text.trim() ==
+        _confirmPassword.text.trim()) {
       return true;
     }
     else {
