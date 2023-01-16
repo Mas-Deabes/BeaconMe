@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,8 @@ class _registrationScreenState extends State<registrationScreen> {
   final _userController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPassword = TextEditingController();
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
 
   @override
 
@@ -25,15 +28,36 @@ class _registrationScreenState extends State<registrationScreen> {
     _userController.dispose();
     _passwordController.dispose();
     _confirmPassword.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+
     super.dispose();
   }
 
   Future signUp() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    if (PasswordConfirmed()) {
+      //Creates The User
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _userController.text.trim(),
         password: _passwordController.text.trim(),
-    );
+      );
+     addUserDetails(
+       _firstNameController.text.trim(),
+       _lastNameController.text.trim(),
+       _userController.text.trim(),
+       _passwordController.text.trim(),
+     );
 
+    }
+  }
+  
+  Future addUserDetails(String firstName, String lastName , String Email , String Password) async {
+    await FirebaseFirestore.instance.collection('UserCredentials').add({
+      'First Name' : firstName,
+      'Last Name' : lastName,
+      'Email' : Email,
+      'Password' :  Password,
+    });
   }
 
   bool PasswordConfirmed() {
@@ -63,9 +87,51 @@ class _registrationScreenState extends State<registrationScreen> {
                   ),
                 ),
 
-                //Username or Email Input Box
+                //First Name
 
                 SizedBox(height: 50),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color:  Colors.white70,
+                      border: Border.all(color: Colors.lightBlueAccent),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: TextField(
+                      controller: _firstNameController,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: '    First Name'
+                      ),
+                    ),
+                  ),
+                ),
+
+                //Password Input Box
+                SizedBox(height: 10),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color:  Colors.white70,
+                      border: Border.all(color: Colors.lightBlueAccent),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: TextField(
+                      controller: _lastNameController,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: '    Last Name'
+                      ),
+                    ),
+                  ),
+                ),
+
+                //Password Input Box
+                SizedBox(height: 10),
 
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
