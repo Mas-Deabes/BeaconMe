@@ -47,18 +47,21 @@ class _registrationScreenState extends State<registrationScreen> {
      addUserDetails(
        _firstNameController.text.trim(),
        _lastNameController.text.trim(),
-       _userController.text.trim(),
      );
     }
   }
-  
-  Future addUserDetails(String firstName, String lastName , String Email ,) async {
-    await FirebaseFirestore.instance.collection('users').add({
-      'First Name': firstName,
-      'Last Name': lastName,
-      'Email': Email,
-    });
+
+  Future addUserDetails(String firstName, String lastName) async {
+    try {
+      await FirebaseFirestore.instance.collection('users').add({
+        'First Name': firstName,
+        'Last Name': lastName,
+      });
+    } catch (e) {
+      print('Error adding user details: $e');
+    }
   }
+
 
   bool PasswordConfirmed() {
     if (_passwordController.text.trim() ==
@@ -196,7 +199,7 @@ class _registrationScreenState extends State<registrationScreen> {
 
                 SizedBox(height: 20),
 
-                //Sign in Button
+                //Sign up Button
 
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),

@@ -1,33 +1,38 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nea/Pages/HomePage.dart';
+import 'package:nea/Pages/SettingsPage(),.dart';
 
 class dashboardScreen extends StatefulWidget {
-  const dashboardScreen({Key? key}) : super(key: key);
-
   @override
   State<dashboardScreen> createState() => _dashboardScreenState();
 }
 
-class _dashboardScreenState extends State<dashboardScreen>{
+class _dashboardScreenState extends State<dashboardScreen> {
+  List pages = [
+    HomePage(),
+    SettingsPage(),
+  ];
 
-  final user = FirebaseAuth.instance.currentUser!;
+  int currentIndex=0;
+  void onTap(int index){
+    setState(() {
+      currentIndex = index;
+    });
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("Signed In as " + user.email!),
-          MaterialButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-              },
-              color: Colors.deepPurpleAccent,
-              child: Text("Sign Out"),
-          )
+      body: pages[currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: onTap,
+        currentIndex: currentIndex,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label:'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label:'Settings'),
         ],
       ),
     );
   }
 }
-
