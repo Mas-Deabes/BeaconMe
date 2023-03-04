@@ -12,12 +12,14 @@ class SettingsPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text("Signed In as " + user.email!),
-          MaterialButton(
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-            },
-            color: Colors.deepPurpleAccent,
-            child: Text("Sign Out"),
+          Center(
+            child: MaterialButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+              },
+              color: Colors.deepPurpleAccent,
+              child: Text("Sign Out"),
+            ),
           )
         ],
       ),

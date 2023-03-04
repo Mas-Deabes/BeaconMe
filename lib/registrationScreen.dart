@@ -36,31 +36,36 @@ class _registrationScreenState extends State<registrationScreen> {
 
   Future signUp() async {
     if (PasswordConfirmed()) {
-      //Creates The User
+      // Creates The User
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _userController.text.trim(),
         password: _passwordController.text.trim(),
       );
 
-      // adds user details to firestore
-
-     addUserDetails(
-       _firstNameController.text.trim(),
-       _lastNameController.text.trim(),
-     );
+      // Adds user details to Firestore
+      await addUserDetails(
+        _firstNameController.text.trim(),
+        _lastNameController.text.trim(),
+      );
     }
   }
 
   Future addUserDetails(String firstName, String lastName) async {
     try {
-      await FirebaseFirestore.instance.collection('users').add({
+      // Get the UID of the current user
+      String uid = FirebaseAuth.instance.currentUser!.uid;
+
+      // Add the user's details to Firestore, including their UID
+      await FirebaseFirestore.instance.collection('users').doc(uid).set({
         'First Name': firstName,
         'Last Name': lastName,
+        'UID': uid,
       });
     } catch (e) {
       print('Error adding user details: $e');
     }
   }
+
 
 
   bool PasswordConfirmed() {
