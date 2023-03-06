@@ -60,6 +60,7 @@ class _registrationScreenState extends State<registrationScreen> {
         'First Name': firstName,
         'Last Name': lastName,
         'UID': uid,
+        'NSteps' : 0,
       });
     } catch (e) {
       print('Error adding user details: $e');

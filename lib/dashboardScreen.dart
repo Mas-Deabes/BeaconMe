@@ -9,8 +9,8 @@ class dashboardScreen extends StatefulWidget {
 }
 
 class _dashboardScreenState extends State<dashboardScreen> {
-  List pages = [
-    Dashboard(),
+  List<Widget> pages = [
+    StepTracker(),
     Leaderboard(),
     SettingsPage(),
   ];
@@ -26,7 +26,10 @@ class _dashboardScreenState extends State<dashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[currentIndex],
+      body: IndexedStack(
+        index: currentIndex,
+        children: pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTap,
         currentIndex: currentIndex,
