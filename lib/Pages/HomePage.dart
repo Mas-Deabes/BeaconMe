@@ -6,12 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
 import 'dart:math';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(StepTracker());
-}
-
 class StepTracker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -39,6 +33,10 @@ class _MyHomePageState extends State<MyHomePage> {
   List<double> _accelerometerValues = <double>[];
   int _stepCount = 0;
   String _userName = '';
+
+  // These constants are used for the calorie calculation
+  static const double AVERAGE_STRIDE_LENGTH = 0.762; // meters
+  static const double CALORIES_PER_STEP = 0.04; // kcal
 
   @override
   void initState() {
@@ -106,8 +104,25 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
+  double _calculateDistance(double steps) {
+    // The average person's step length is approximately 2.5 feet.
+    return steps * 2.5 / 5280.0;
+  }
+
+  double _calculateCaloriesBurned(double steps) {
+    // The average person burns approximately 0.05 calories per step.
+    return steps * 0.05;
+  }
 
   Widget build(BuildContext context) {
+    double distanceInMiles = _calculateDistance(_stepCount.toDouble());
+    double distanceInMetres = (distanceInMiles / 0.00062137);
+    double caloriesBurned = _calculateCaloriesBurned(_stepCount.toDouble());
+
+    String distanceInMilesStr = distanceInMiles.toStringAsFixed(1);
+    String distanceInMetresStr = distanceInMetres.toStringAsFixed(1);
+    String caloriesBurnedStr = caloriesBurned.toStringAsFixed(1);
+
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       body: Container(
@@ -179,13 +194,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         Column(children: [
                           Text('Steps Made : $_stepCount'),
                           SizedBox(height: 70),
-                          Text('Calories Burnt : '),
+                          Text('Calories Burnt : $caloriesBurnedStr'),
                           SizedBox(height: 70),
-                          Text('Distance Travelled :'),
+                          Text('Distance Travelled : '),
                           SizedBox(height: 20),
-                          Text('Metres : '),
+                          Text(' $distanceInMetresStr meters'),
                           SizedBox(height: 20),
-                          Text('Miles :'),
+                          Text('$distanceInMilesStr miles'),
                         ],),
                       ],),
                     ],
