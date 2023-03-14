@@ -11,7 +11,7 @@ class dashboardScreen extends StatefulWidget {
 class _dashboardScreenState extends State<dashboardScreen> {
   List<Widget> pages = [
     StepTracker(),
-    Leaderboard(),
+    LeaderboardScreen(),
     SettingsPage(),
   ];
 
